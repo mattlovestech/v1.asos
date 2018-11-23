@@ -1,0 +1,46 @@
+<form>
+ <div class="form-group">
+      <label for="disabledSelect">Choose Friend</label>
+      <select [(ngModel)]="selectedFriend" id="disabledSelect" class="form-control" name="first">
+        <option value="Amy" >Amy</option>
+        <option value="Drew" selected>Drew</option>
+        <option class="italics" value="Custom" disabled> Custom (Coming Soon)</option>
+      </select>
+      <small  class="form-text text-muted">Select which friend you want the text to be from.</small>
+    </div>
+
+  <div class="form-group">
+    <label>Select Scenario</label>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        "Hey, its {{ selectedFriend }} I am using my co-workers phone. I need you to come now, I got sent home sick."
+
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        "Heyy this is {{ selectedFriend }}. Phone dying so texting from a friends phone. Are you otw yet, plz hurry?"
+      </label>
+    </div>
+   <!-- <div class="form-check disabled">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+        More scenarios coming soon
+      </label>
+    </div> -->
+    <small  class="form-text text-muted">Choose the scenario you want your friend to use to get you out of the awkward situation.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="selectTime">When Should {{ selectedFriend }} Text you?</label>
+    <select id="selectTime" class="form-control">
+      <option>Text Me Now</option>
+      <option>Text me in 15 Minutes</option>
+      <option>Text me in 30 Minutes</option>
+      <option>Text me in 1 Hour</option>
+    </select>
+    <small  class="form-text text-muted">Select when you want {{ selectedFriend }} to send you a text.</small>
+  </div>
+</form>

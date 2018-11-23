@@ -1,0 +1,96 @@
+<div class="container-fluid">
+<section>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Awk SOS</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="#"> How it Works</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Customize (Coming Soon)</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</section>
+
+  <div class="row">
+
+    <div class="jumbotron text-left">
+      <h1 class="display-3">Awk SOS</h1>
+
+
+      <!-- Static Info -->
+      <section >
+      <p class="lead">Elegantly excuse yourself from awkward.</p>
+      <hr class="my-4">
+      <p class="lead">Awk SOS sends you a text from AI powered virtual friends, to help get you out of awkward situations.</p>
+      </section>
+      <!-- -->
+      <!-- Alerts -->
+      <div [hidden]="showHelpOtw" class="alert alert-success" role="alert">
+        <!-- <a href="#" class="alert-link">Send Feedback</a>.-->
+        <h4 class="alert-heading">Help is on the way!</h4>
+        <p>Thanks for using Awk SOS, look out for a text from {{ selectedFriend }}</p>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+      </div>
+      <!-- Enter Phone Number Step 1 -->
+      <div class="form-group">
+        <label>Enter Mobile Number</label>
+        <!--<label class="lead" for="phoneInput" >{{ mobileInput }}</label>-->
+        <input maxlength="10"  [(ngModel)]="mobileInput" type="tel" class="form-control" id="phoneInput" aria-describedby="emailHelp" placeholder="888 888 8888">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your phone number with anyone else.</small>
+      </div>
+      <!-- Select Virtual Friend  Step 2 -->
+      <div  class="form-group" *ngIf="mobileInput.length == 10">
+        <label for="selectFriend">Who Should Text You?</label>
+
+        <select [(ngModel)]="selectedFriend" id="selectFriend" name="selectTime" class="form-control" >
+          <option value="null" disabled selected> Select A Virtual Friend</option>
+          <option value="Amy" >Amy</option>
+          <option value="Drew">Drew</option>
+        </select>
+
+        <small  class="form-text text-muted">Select which virtual friend you want the text to be from.</small>
+      </div>
+      <!-- Select Time to Delivery Step 3 -->
+      <div  class="form-group" *ngIf="selectedFriend !== 'null'">
+        <label for="selectTime">When Should {{ selectedFriend }} Text You?</label>
+
+          <select [(ngModel)]="sendTime" id="selectTime" name="selectTime" class="form-control" >
+            <option value="null" disabled selected> Select a Time</option>
+            <option value="0" >Text Me Now</option>
+            <option value="60">Text Me in 15 Minutes</option>
+            <option value="1800">Text Me in 30 Minutes</option>
+            <option value="3600" >Text Me in 1 Hour</option>
+          </select>
+
+        <small  class="form-text text-muted">Select when you want {{ selectedFriend }} to send you a text.</small>
+      </div>
+
+      <!--{{ sendTime + "," + mobileInput.length}}-->
+
+      <p class="lead">
+        <!--<a [routerLink]="['/help-otw']" class="btn btn-primary" href="#" role="button">Send Help :)</a>
+        <router-outlet></router-outlet>-->
+        <button [disabled]="sendTime == 'null'" class="btn btn-primary" role="button" (click)="sendSms(url + mobileInput + '?seconds=' + sendTime)">Send Help :)</button>
+        <!--<a [hidden]="mobileInput.length !== 10" (click)="sendSms(url + mobileInput + '?seconds=' + sendTime)" class="btn btn-primary" href="#" role="button">Send Help :)</a>-->
+        <!--<a (click)="showStep2= false" class="btn btn-primary" href="#" role="button">Go Back</a>-->
+
+    <div class="col-sm-8" style="background-color:lavenderblush;"></div>
+  </div>
+  </div>
+
+</div>
